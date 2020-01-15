@@ -40,8 +40,16 @@ function addTask() {
 }
 
 function tableUpdate() {
-  if ($("#task").val() != null &&
-      $("#task").val() != '') {
+  if ($("#task").val() == '') {
+    alert('Podaj nazwę zadania')
+  }
+  else if ($("#task").val().length < 5) {
+    alert('Nazwa zadania musi mieć co najmniej 5 znaków')
+  }
+  else if ($("#amount").val() == '') {
+    alert('Podaj kwotę w PLN (liczba)')
+  }
+  else {
     addTask();
     formClear();
     $("#task").focus();
