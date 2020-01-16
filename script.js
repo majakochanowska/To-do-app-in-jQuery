@@ -34,7 +34,7 @@ function addTask() {
         "<td class='pln-amount'>" + $("#amount").val() + "</td>" +
         "<td>" + ($("#amount").val()*EXCHANGE).toFixed(2) + "</td>" +
         "<td>" +
-        "<button type='button' " + "onclick='taskDelete(this);'>" + "Usuń" + "</button>" + "</td>" +
+        "<button type='button' onclick='taskDelete(this);' class='delete-button'>" + "<i class='fas fa-trash'></i> Usuń" + "</button>" + "</td>" +
       "</tr>"
       );
 }
@@ -76,6 +76,6 @@ function calculateSum() {
     plnSum += numberValue;
     eurSum = (plnSum*EXCHANGE).toFixed(2);
   })
-  $("#pln-sum").html(plnSum);
-  $("#eur-sum").html(eurSum);
+  $("#pln-sum").html(plnSum + " PLN");
+  $("#eur-sum").html("(" + eurSum + " EUR)");
 }

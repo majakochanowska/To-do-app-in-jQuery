@@ -1,0 +1,136 @@
+$grey: #a8a8a8;
+$focuscolor: #00559b;
+$buttoncolor: #00447c;
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+hr {
+    border: 0.02em solid darken($grey, 30%);
+    width: 300px;
+}
+
+.inputs-container {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.float-label {
+	position: relative;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+    width: 100%;
+}
+.float-label label {
+    color: $grey;
+	position: absolute;
+	left: 17px;
+	font-size: 14px;
+	transition: all 0.1s ease-in-out;
+	transform-origin: 0% 0%;
+}
+
+.float-label input {
+    border: solid 1px $grey;
+	height: 30px;
+	width: 300px;
+    padding: 15px;
+    margin: 10px 0;
+	border-radius: 3px;
+	font-size: 14px;
+	transition: all 0.3s ease-in-out;
+}
+
+.float-label input:focus {
+	outline: 0;
+	border: 1px solid $focuscolor;
+}
+
+@mixin input-focus {
+    color: $focuscolor;
+    top: -2px;
+    transform: scale(0.8);
+    transition: all 0.3s ease-in-out;
+}
+
+.float-label input:focus + label {
+    @include input-focus;
+}
+
+.float-label input:valid + label {
+    @include input-focus;
+}
+
+.button-container {
+    margin: 10px 0 20px 0;
+}
+
+.currency-rate {
+    font-size: 80%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.add-button {
+    display: inline;
+    float: right;
+    color: #fff;
+    background-color: $buttoncolor;
+    padding: 7px 25px;
+    border: none;
+    border-radius: 3px;
+}
+
+.add-button:hover {
+    background-color: darken($buttoncolor, 10%);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.task-table {
+    border: 1px solid $grey;
+    width: 100%;
+    text-align: left;
+    border-spacing: 0;
+    border-radius: 3px;
+    margin: 15px 0;
+}
+
+@mixin td {
+    border: none;
+    padding: 13px;
+    font-size: 14px;
+    color: #333;
+    border-top: 1px solid $grey;
+}
+
+.task-table td {
+    @include td;
+}
+
+.task-table th {
+    @include td;
+    font-weight:bold;
+    border-top: none;
+}
+
+.task-table tr {
+    border: 1px solid $grey;
+}
+
+.delete-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.tasks-header {
+    margin: 20px 0 15px 10px;
+}
