@@ -40,21 +40,32 @@ function addTask() {
 }
 
 function tableUpdate() {
-  if ($("#task").val() == '') {
-    alert('Podaj nazwę zadania')
+  if ($("#task").val() == "") {
+    $("#task-error").text("Podaj nazwę zadania");
+    $("#task").css("border", "1px solid red")
   }
   else if ($("#task").val().length < 5) {
-    alert('Nazwa zadania musi mieć co najmniej 5 znaków')
+    $("#task-error").text("Nazwa zadania musi mieć co najmniej 5 znaków");
+    $("#task").css("border", "1px solid red")
   }
-  else if ($("#amount").val() == '') {
-    alert('Podaj kwotę w PLN (liczba)')
+  else if ($("#amount").val() == "") {
+    $("#amount-error").text("Podaj kwotę w PLN (liczba)");
+    $("#amount").css("border", "1px solid red")
   }
   else {
+    removeErrorMessage();
     addTask();
     formClear();
     $("#task").focus();
     calculateSum();
   }
+}
+
+function removeErrorMessage() {
+  $("#task-error").text("");
+  $("#task").css("border", "1px solid #a8a8a8");
+  $("#amount-error").text("");
+  $("#amount").css("border", "1px solid #a8a8a8");
 }
 
 function formClear() {
