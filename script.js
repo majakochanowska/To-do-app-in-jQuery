@@ -1,4 +1,6 @@
 $(function() {
+  var storedEmployee = JSON.parse(localStorage.getItem("store-employee"));
+  var storedCompany = JSON.parse(localStorage.getItem("store-company"));
 
     var sources = {
         'Company ABC' : [ "Employee 1", "Employee 2", "Employee 3" ],
@@ -13,12 +15,17 @@ $(function() {
           $("#employee").autocomplete("option", {
             source: sources[event.currentTarget.value]
           });
-        }
-      });
+          localStorage.setItem("store-company", JSON.stringify(event.currentTarget.value));
+        },   
+      }).val(storedCompany);
 
       $("#employee").autocomplete({
-        source: []
-      })
+        source: [],
+        change: function() {
+          localStorage.setItem("store-employee", JSON.stringify(event.currentTarget.value));
+          tableClear();
+        }
+      }).val(storedEmployee)
 }) 
 
 var EXCHANGE = 4.8282;
@@ -89,4 +96,9 @@ function calculateSum() {
   })
   $("#pln-sum").html(plnSum + " PLN");
   $("#eur-sum").html("(" + eurSum + " EUR)");
+}
+
+function tableClear() {
+  $("#taskTable tbody").remove();
+  calculateSum();
 }
