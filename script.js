@@ -102,3 +102,42 @@ function tableClear() {
   $("#taskTable tbody").remove();
   calculateSum();
 }
+
+function sortName(order) {
+  var asc = order === 'asc';
+  var tbody = $("#taskTable").find('tbody');
+
+  tbody.find('tr').sort(function(a, b) {
+    if (asc) {
+      return $('td:first', a).text().localeCompare($('td:first', b).text());
+    } else {
+      return $('td:first', b).text().localeCompare($('td:first', a).text());
+    }
+  }).appendTo(tbody);
+}
+
+function sortPLN(order) {
+  var asc = order === 'asc';
+  var tbody = $("#taskTable").find('tbody');
+
+  tbody.find('tr').sort(function(a, b) {
+    if (asc) {
+      return $('td:nth-child(2)', a).text() - ($('td:nth-child(2)', b).text());
+    } else {
+      return $('td:nth-child(2)', b).text() - ($('td:nth-child(2)', a).text());
+    }
+  }).appendTo(tbody);
+}
+
+function sortEUR(order) {
+  var asc = order === 'asc';
+  var tbody = $("#taskTable").find('tbody');
+
+  tbody.find('tr').sort(function(a, b) {
+    if (asc) {
+      return $('td:nth-child(3)', a).text() - ($('td:nth-child(3)', b).text());
+    } else {
+      return $('td:nth-child(3)', b).text() - ($('td:nth-child(3)', a).text());
+    }
+  }).appendTo(tbody);
+}

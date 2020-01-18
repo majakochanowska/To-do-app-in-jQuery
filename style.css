@@ -139,3 +139,24 @@ hr {
   position: absolute;
   width: 100%;
 }
+
+.arrow, .arrow-asc, .arrow-desc {
+  position: relative;
+  font-size: 12px;
+  color: #a8a8a8;
+  cursor: pointer;
+}
+
+.arrow:hover, .arrow-asc:hover, .arrow-desc:hover {
+  color: black;
+}
+
+.arrow-asc {
+  bottom: 6px;
+  left: 8px;
+}
+
+.arrow-desc {
+  top: 6px;
+  right: 8px;
+}
