@@ -151,8 +151,9 @@ input:-ms-input-placeholder {
 .error {
   font-size: 80%;
   color: red;
-  left: 310px;
   position: absolute;
+  left: 310px;
+  top: 20px;
   width: 100%;
 }
 
