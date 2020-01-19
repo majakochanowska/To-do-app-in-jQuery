@@ -60,7 +60,6 @@ function removeErrorMessage() {
 }
 
 function addTask() {
-  console.log('table');
   if ($("#taskTable tbody").length == 0) {
     $("#taskTable").append("<tbody></tbody>");
   }

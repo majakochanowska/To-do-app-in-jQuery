@@ -68,6 +68,10 @@ input:not(:placeholder-shown) + label {
     @include input-focus;
 }
 
+input:not(:-ms-input-placeholder) + label {
+    @include input-focus;
+}
+
 input::placeholder {
     visibility: hidden;
 }

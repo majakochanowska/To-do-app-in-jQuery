@@ -64,6 +64,13 @@ input:not(:placeholder-shown) + label {
   transition: all 0.3s ease-in-out;
 }
 
+input:not(:-ms-input-placeholder) + label {
+  color: #00559b;
+  top: -2px;
+  transform: scale(0.8);
+  transition: all 0.3s ease-in-out;
+}
+
 input::placeholder {
   visibility: hidden;
 }
