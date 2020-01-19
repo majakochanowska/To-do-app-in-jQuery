@@ -39,7 +39,7 @@ hr {
   border: 1px solid #a8a8a8;
   width: 300px;
   padding: 8px;
-  margin: 10px 0;
+  margin: 12px 0;
   border-radius: 3px;
   font-size: 14px;
   transition: all 0.3s ease-in-out;
@@ -52,21 +52,21 @@ hr {
 
 .float-label input:focus + label {
   color: #00559b;
-  top: -2px;
+  top: -1px;
   transform: scale(0.8);
   transition: all 0.3s ease-in-out;
 }
 
 input:not(:placeholder-shown) + label {
   color: #00559b;
-  top: -2px;
+  top: -1px;
   transform: scale(0.8);
   transition: all 0.3s ease-in-out;
 }
 
 input:not(:-ms-input-placeholder) + label {
   color: #00559b;
-  top: -2px;
+  top: -1px;
   transform: scale(0.8);
   transition: all 0.3s ease-in-out;
 }
@@ -197,9 +197,9 @@ input:-ms-input-placeholder {
   margin: 10px auto;
 }
 
-@media only screen and (max-width: 650px) {
+@media screen and (max-width: 650px) {
   .error {
     left: 3px;
-    bottom: -5px;
+    top: 45px;
   }
 }

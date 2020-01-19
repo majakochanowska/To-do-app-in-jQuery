@@ -42,7 +42,7 @@ hr {
     border: 1px solid $grey;
 	width: 300px;
     padding: 8px;
-    margin: 10px 0;
+    margin: 12px 0;
 	border-radius: 3px;
 	font-size: 14px;
 	transition: all 0.3s ease-in-out;
@@ -55,7 +55,7 @@ hr {
 
 @mixin input-focus {
     color: $focuscolor;
-    top: -2px;
+    top: -1px;
     transform: scale(0.8);
     transition: all 0.3s ease-in-out;
 }
@@ -200,9 +200,9 @@ input:-ms-input-placeholder {
     margin: 10px auto;
 }
 
-@media only screen and (max-width: 650px) {
+@media screen and (max-width: 650px) {
     .error {
         left: 3px;
-        bottom: -5px;
+        top: 45px;
     }
 }
