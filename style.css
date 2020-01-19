@@ -57,11 +57,23 @@ hr {
   transition: all 0.3s ease-in-out;
 }
 
-.float-label input:valid + label {
+input:not(:placeholder-shown) + label {
   color: #00559b;
   top: -2px;
   transform: scale(0.8);
   transition: all 0.3s ease-in-out;
+}
+
+input::placeholder {
+  visibility: hidden;
+}
+
+::-moz-placeholder {
+  color: transparent;
+}
+
+input:-ms-input-placeholder {
+  color: transparent;
 }
 
 .button-container {
@@ -90,13 +102,18 @@ hr {
   cursor: pointer;
 }
 
+.table-container {
+  overflow-x: auto;
+}
+
 .task-table {
   border: 1px solid #a8a8a8;
   width: 100%;
-  text-align: left;
+  max-width: 700px;
+  text-align: center;
   border-spacing: 0;
   border-radius: 3px;
-  margin: 15px 0;
+  margin: 15px auto;
 }
 
 .task-table td {
@@ -139,23 +156,42 @@ hr {
   width: 100%;
 }
 
-.arrow, .arrow-asc, .arrow-desc {
+.th {
   position: relative;
+  min-width: 120px;
+  text-align: center;
+}
+
+.arrow, .arrow-asc, .arrow-desc {
+  position: absolute;
   font-size: 12px;
   color: #a8a8a8;
   cursor: pointer;
+  display: block;
+  right: 0px;
+}
+
+.arrow-asc {
+  bottom: 6px;
+}
+
+.arrow-desc {
+  bottom: -6px;
 }
 
 .arrow:hover, .arrow-asc:hover, .arrow-desc:hover {
   color: black;
 }
 
-.arrow-asc {
-  bottom: 6px;
-  left: 8px;
+.sum {
+  width: 100%;
+  max-width: 700px;
+  margin: 10px auto;
 }
 
-.arrow-desc {
-  top: 6px;
-  right: 8px;
+@media only screen and (max-width: 650px) {
+  .error {
+    left: 3px;
+    bottom: -5px;
+  }
 }

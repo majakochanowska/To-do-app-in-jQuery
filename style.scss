@@ -64,8 +64,20 @@ hr {
     @include input-focus;
 }
 
-.float-label input:valid + label {
+input:not(:placeholder-shown) + label {
     @include input-focus;
+}
+
+input::placeholder {
+    visibility: hidden;
+}
+
+::-moz-placeholder {
+    color: transparent;
+}
+
+input:-ms-input-placeholder {
+    color: transparent;
 }
 
 .button-container {
@@ -94,13 +106,18 @@ hr {
     cursor: pointer;
 }
 
+.table-container {
+    overflow-x: auto;
+}
+
 .task-table {
     border: 1px solid $grey;
     width: 100%;
-    text-align: left;
+    max-width: 700px;
+    text-align: center;
     border-spacing: 0;
     border-radius: 3px;
-    margin: 15px 0;
+    margin: 15px auto;
 }
 
 @mixin td {
@@ -143,25 +160,44 @@ hr {
     width: 100%;
 }
 
-.arrow {
+.th {
     position: relative;
+    min-width: 120px;
+    text-align: center;
+}
+
+.arrow {
+    position: absolute;
     font-size: 12px;
     color: $grey;
     cursor: pointer;
+    display: block;
+    right: 0px;
+}
+
+.arrow-asc {
+    @extend .arrow;
+    bottom: 6px;
+}
+
+.arrow-desc {
+    @extend .arrow;
+    bottom: -6px;  
 }
 
 .arrow:hover {
     color: black;
 }
 
-.arrow-asc {
-    @extend .arrow;
-    bottom: 6px;
-    left: 8px;
+.sum {
+    width: 100%;
+    max-width: 700px;
+    margin: 10px auto;
 }
 
-.arrow-desc {
-    @extend .arrow;
-    top: 6px;
-    right: 8px;
+@media only screen and (max-width: 650px) {
+    .error {
+        left: 3px;
+        bottom: -5px;
+    }
 }

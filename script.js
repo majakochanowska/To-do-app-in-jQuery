@@ -27,10 +27,37 @@ $(function() {
     }
   }).val(storedEmployee);
 
-  $("#addButton").click(tableUpdate);
+  $("#addButton").click(function(e) {
+    e.preventDefault();
+    if ($("#task").val() == "") {
+      $("#task-error").text("Podaj nazwę zadania");
+      $("#task").css("border", "1px solid red");
+    }
+    else if ($("#task").val().length < 5) {
+      $("#task-error").text("Nazwa zadania musi mieć co najmniej 5 znaków");
+      $("#task").css("border", "1px solid red");
+    }
+    else if ($("#amount").val() == "") {
+      $("#amount-error").text("Podaj kwotę w PLN (liczba)");
+      $("#amount").css("border", "1px solid red");
+    }
+    else {
+      removeErrorMessage();
+      addTask();
+      formClear();
+      calculateSum();
+    }
+  })
 }) 
 
 var EXCHANGE = 4.8282;
+
+function removeErrorMessage() {
+  $("#task-error").text("");
+  $("#task").css("border", "1px solid #a8a8a8");
+  $("#amount-error").text("");
+  $("#amount").css("border", "1px solid #a8a8a8");
+}
 
 function addTask() {
   console.log('table');
@@ -49,45 +76,10 @@ function addTask() {
       );
 }
 
-function tableUpdate() {
-  if ($("#task").val() == "") {
-    $("#task-error").text("Podaj nazwę zadania");
-    $("#task").css("border", "1px solid red");
-    return false;
-  }
-  else if ($("#task").val().length < 5) {
-    $("#task-error").text("Nazwa zadania musi mieć co najmniej 5 znaków");
-    $("#task").css("border", "1px solid red");
-    return false;
-  }
-  else if ($("#amount").val() == "") {
-    $("#amount-error").text("Podaj kwotę w PLN (liczba)");
-    $("#amount").css("border", "1px solid red");
-    return false;
-  }
-  else {
-    removeErrorMessage();
-    addTask();
-    formClear();
-    calculateSum();
-  }
-}
-
-function removeErrorMessage() {
-  $("#task-error").text("");
-  $("#task").css("border", "1px solid #a8a8a8");
-  $("#amount-error").text("");
-  $("#amount").css("border", "1px solid #a8a8a8");
-}
-
 function formClear() {
   $("#task").val("");
   $("#amount").val("");
-}
-
-function taskDelete(el) {
-  $(el).parents("tr").remove();
-  calculateSum();
+  $("#task").focus();
 }
 
 function calculateSum() {
@@ -101,6 +93,11 @@ function calculateSum() {
   })
   $("#pln-sum").html(plnSum + " PLN");
   $("#eur-sum").html("(" + eurSum + " EUR)");
+}
+
+function taskDelete(el) {
+  $(el).parents("tr").remove();
+  calculateSum();
 }
 
 function tableClear() {
